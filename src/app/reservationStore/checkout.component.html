@@ -1,0 +1,131 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="bg-dark text-white p-2">
+      <span class="navbar-brand ml-2">RESERVATIONS</span>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="orderSent" class="m-2 text-center">
+  <h2>Thanks!</h2>
+  <p>Thanks for placing your order.</p>
+  <p>We'll ship your goods as soon as possible.</p>
+  <button class="btn btn-primary" routerLink="/reservationStore">Return to Reservations</button>
+</div>
+
+<div *ngIf="!orderSent" class="container checkout-background">
+
+    <div class="p-4 border rounded shadow">
+      <h2 class="text-center">Your Cart</h2>
+      <table class="table table-bordered table-striped p-2">
+        <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Conservation Area</th>
+            <th class="text-end">Price</th>
+            <th class="text-end">Subtotal</th>
+          </tr>
+        </thead>
+          <tbody>
+
+            <tr *ngIf="cart.lines.length == 0">
+              <td colspan="4" class="text-center">
+              Your cart is empty
+              </td>
+            </tr>
+
+            <tr *ngFor="let line of cart.lines">
+              <td><input type="number" class="form-control-sm"
+                style="width:5em" [value]="line.quantity"
+                (change)="cart.updateQuantity(line.conservationArea,
+                $any($event).target.value)" />
+              </td>
+              <td>{{line.conservationArea.name}}</td>
+              <td class="text-end">{{line.selectedTimeSlot?.price | currency:"USD":"symbol":"1.2-2"}}</td>
+              <td class="text-end">{{(line.lineTotal) | currency:"USD":"symbol":"1.2-2" }}</td>
+              <td class="text-center">
+                <button class="btn btn-sm btn-danger"
+                  (click)="cart.removeLine(line.conservationArea.id)">
+                  Remove
+                </button>
+              </td>
+            </tr>
+          </tbody> 
+        <tfoot>
+          <tr>
+            <td colspan="3" class="text-end">Total:</td>
+            <td class="text-end">{{cart.cartPrice | currency:"USD":"symbol":"1.2-2"}}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+
+
+    <div class="p-4 border rounded shadow">
+      <form #form="ngForm" novalidate
+        (ngSubmit)="submitOrder(form)" class="m-2">
+
+          <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" #name="ngModel" name="name"
+              [(ngModel)]="order.name" required />
+                <span *ngIf="submitted && name.invalid" class="text-danger">
+                  Please enter your name
+                </span>
+          </div>
+
+          <div class="form-group">
+            <label>Address</label>
+            <input class="form-control" #address="ngModel" name="address"
+              [(ngModel)]="order.address" required />
+                <span *ngIf="submitted && address.invalid" class="text-danger">
+                  Please enter your address
+                </span>
+          </div>
+
+          <div class="form-group">
+            <label>City</label>
+            <input class="form-control" #city="ngModel" name="city"
+              [(ngModel)]="order.city" required />
+                <span *ngIf="submitted && city.invalid" class="text-danger">
+                  Please enter your city
+                </span>
+          </div>
+
+          <div class="form-group">
+            <label>State</label>
+            <input class="form-control" #state="ngModel" name="state"
+              [(ngModel)]="order.state" required />
+                <span *ngIf="submitted && state.invalid" class="text-danger">
+                  Please enter your state
+                </span>
+          </div>
+
+          <div class="form-group">
+            <label>Zip/Postal Code</label>
+            <input class="form-control" #zip="ngModel" name="zip"
+              [(ngModel)]="order.zip" required />
+                <span *ngIf="submitted && zip.invalid" class="text-danger">
+                  Please enter your zip/postal code
+                </span>
+          </div>
+
+          <div class="form-group">
+              <label>Country</label>
+              <input class="form-control" #country="ngModel" name="country"
+                [(ngModel)]="order.country" required />
+                  <span *ngIf="submitted && country.invalid" class="text-danger">
+                    Please enter your country
+                  </span>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-secondary m-1" routerLink="/cart">Back</button>
+            <button class="btn btn-primary m-1" type="submit">Complete Order</button>
+          </div>
+      </form>
+    </div>
+
+</div>

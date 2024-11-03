@@ -8,7 +8,7 @@ import {
   isPlatformServer,
   parseCookieValue,
   setRootDomAdapter
-} from "./chunk-UP3664T6.js";
+} from "./chunk-BTTFI6VG.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   APP_ID,
@@ -74,7 +74,7 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-MJ6RAITD.js";
+} from "./chunk-ZBGUXSEW.js";
 import {
   Observable,
   __async,
@@ -89,9 +89,9 @@ import {
   of,
   switchMap,
   tap
-} from "./chunk-PF6LNL77.js";
+} from "./chunk-7BSBT5CE.js";
 
-// node_modules/@angular/common/fesm2022/http.mjs
+// ../../../node_modules/@angular/common/fesm2022/http.mjs
 var HttpHandler = class {
 };
 var HttpBackend = class {
@@ -2331,7 +2331,7 @@ function verifyMappedOrigin(url) {
   }
 }
 
-// node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs
+// ../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs
 var GenericBrowserDomAdapter = class extends DomAdapter {
   constructor() {
     super(...arguments);
@@ -4145,44 +4145,44 @@ function provideClientHydration(...features) {
   return makeEnvironmentProviders([typeof ngDevMode !== "undefined" && ngDevMode ? provideZoneJsCompatibilityDetector() : [], withDomHydration(), featuresKind.has(HydrationFeatureKind.NoHttpTransferCache) || hasHttpTransferCacheOptions ? [] : withHttpTransferCache({}), providers]);
 }
 var VERSION = new Version("18.2.9");
+
 export {
-  BrowserModule,
-  By,
-  DomSanitizer,
+  BrowserDomAdapter,
+  BrowserGetTestability,
   EVENT_MANAGER_PLUGINS,
   EventManager,
   EventManagerPlugin,
+  SharedStylesHost,
+  REMOVE_STYLES_ON_COMPONENT_DESTROY,
+  DomRendererFactory2,
+  DomEventsPlugin,
+  KeyEventsPlugin,
+  bootstrapApplication,
+  createApplication,
+  provideProtractorTestingSupport,
+  initDomAdapter,
+  INTERNAL_BROWSER_PLATFORM_PROVIDERS,
+  platformBrowser,
+  BrowserModule,
+  Meta,
+  Title,
+  enableDebugTools,
+  disableDebugTools,
+  By,
   HAMMER_GESTURE_CONFIG,
   HAMMER_LOADER,
   HammerGestureConfig,
+  HammerGesturesPlugin,
   HammerModule,
+  DomSanitizer,
+  DomSanitizerImpl,
   HydrationFeatureKind,
-  Meta,
-  REMOVE_STYLES_ON_COMPONENT_DESTROY,
-  Title,
-  VERSION,
-  bootstrapApplication,
-  createApplication,
-  disableDebugTools,
-  enableDebugTools,
-  platformBrowser,
-  provideClientHydration,
-  provideProtractorTestingSupport,
-  withEventReplay2 as withEventReplay,
+  withNoHttpTransferCache,
   withHttpTransferCacheOptions,
   withI18nSupport2 as withI18nSupport,
-  withNoHttpTransferCache,
-  BrowserDomAdapter as ɵBrowserDomAdapter,
-  BrowserGetTestability as ɵBrowserGetTestability,
-  DomEventsPlugin as ɵDomEventsPlugin,
-  DomRendererFactory2 as ɵDomRendererFactory2,
-  DomSanitizerImpl as ɵDomSanitizerImpl,
-  HammerGesturesPlugin as ɵHammerGesturesPlugin,
-  INTERNAL_BROWSER_PLATFORM_PROVIDERS as ɵINTERNAL_BROWSER_PLATFORM_PROVIDERS,
-  KeyEventsPlugin as ɵKeyEventsPlugin,
-  SharedStylesHost as ɵSharedStylesHost,
-  getDOM as ɵgetDOM,
-  initDomAdapter as ɵinitDomAdapter
+  withEventReplay2 as withEventReplay,
+  provideClientHydration,
+  VERSION
 };
 /*! Bundled license information:
 
@@ -4200,4 +4200,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=@angular_platform-browser.js.map
+//# sourceMappingURL=chunk-BOTZY6C5.js.map

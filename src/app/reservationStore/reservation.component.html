@@ -1,25 +1,44 @@
 <div class="container-fluid">
   <div class="row">
     <div class="bg-dark text-white p-2">
-      <span class="navbar-brand ml-2">RESERVATION</span>
+      <span class="navbar-brand ml-2">RESERVATIONS
+        <cart-summary></cart-summary>
+      </span>
     </div>
   </div>
+
   <div class="row text-dark">
-    <div class="col-3 bg-info p-2">
-      <h5>{{ uniqueTimeSlots.length}} Time Slots</h5>
-        <div *ngFor="let timeSlot of uniqueTimeSlots" class="card m-1 p-1 bg-light">
-          {{ timeSlot.time }}
-        </div>
-    </div>
     <div class="col-9 p-2 text-dark">
       <div *ngFor="let conservationArea of conservationAreas" class="card m-1 p-1 bg-light">
         <h4>
-          {{conservationArea.name}}
+          {{ conservationArea.name }}
           <span class="badge rounded-pill bg-primary" style="float:right">
-            {{ conservationArea.price | currency:"USD":"symbol":"2.2-2" }}
+            <ng-container *ngIf="conservationArea.id !== undefined">
+              {{ getSelectedPrice(conservationArea.id) | currency: 'USD':'symbol':'1.2-2' }}
+            </ng-container>
+            <ng-container *ngIf="conservationArea.id === undefined">
+              Price Not Available
+            </ng-container>
           </span>
         </h4>
-        <div class="card-text bg-white p-1">{{conservationArea.description}}</div>
+        <div class="card-text bg-white p-3">
+          <h5 class="mb-0">{{ conservationArea.description }}</h5>
+          <button class="btn btn-success btn-sm float-end"
+            (click)="addReservationToCart(conservationArea)">
+              Add To Cart
+          </button>
+        </div>
+
+        <div class="bg-white p-2">
+          
+          <div class="time-slot-container d-flex flex-wrap">
+            <h6 class="time-slot-label">Choose a Time Slot</h6>
+            <div *ngFor="let timeSlot of uniqueTimeSlots" class="card m-1 time-slot border p-2"
+                 (click)="onSelectTimeSlot(conservationArea.id, timeSlot)">
+              {{ timeSlot.time }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

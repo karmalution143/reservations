@@ -1,0 +1,24 @@
+input.ng-dirty.ng-invalid { border: 2px solid #ff0000 }
+input.ng-dirty.ng-valid { border: 2px solid #6bc502 }
+
+.checkout-background {
+  background: linear-gradient(to bottom, #d3d3d3, #ffffff);
+  min-height: 100vh;
+}
+
+.time-slot-label {
+  margin-right: 20px; /* Adjust the space as needed */
+}
+
+h5 {
+  color: #000;
+}
+
+.time-slot {
+  transition: background-color 0.3s; 
+}
+
+.time-slot:hover {
+  background-color: #e0e0e0; 
+  cursor: pointer; 
+}
