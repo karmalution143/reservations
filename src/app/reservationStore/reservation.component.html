@@ -6,7 +6,9 @@
       </span>
     </div>
   </div>
-
+  <button class="btn btn-danger mt-5" routerLink="/admin">
+    Admin
+  </button>
   <div class="row text-dark">
     <div class="col-9 p-2 text-dark">
       <div *ngFor="let conservationArea of conservationAreas" class="card m-1 p-1 bg-light">
@@ -30,7 +32,6 @@
         </div>
 
         <div class="bg-white p-2">
-          
           <div class="time-slot-container d-flex flex-wrap">
             <h6 class="time-slot-label">Choose a Time Slot</h6>
             <div *ngFor="let timeSlot of uniqueTimeSlots" class="card m-1 time-slot border p-2"

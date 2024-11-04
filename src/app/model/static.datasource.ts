@@ -7,7 +7,7 @@ import { Order } from "./order.model";
 export class StaticDataSource {
   private conservationAreas: ConservationArea[] = [
     new ConservationArea(1, "Green Lake Conservation Area", "A beautiful lake surrounded by forest.", [
-      new TimeSlot(1, "9:00 AM - 12:00 PM", 5), //with price adjustment
+      new TimeSlot(1, "9:00 AM - 12:00 PM", 5),
       new TimeSlot(2, "12:00 PM - 3:00 PM", 10),
       new TimeSlot(3, "3:00 PM - 6:00 PM", 15)
     ]),

@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
   templateUrl: "reservation.component.html",
   styleUrls: ["checkout.component.css"]
 })
+
 export class ReservationComponent {
   selectedTimeSlot: TimeSlot | undefined;
   selectedTimeSlots: { [id: number]: TimeSlot } = {};

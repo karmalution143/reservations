@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ConservationArea, TimeSlot } from "./conservationArea.model";
-import { StaticDataSource } from "./static.datasource";
+//import { StaticDataSource } from "./static.datasource";
+import { RestDataSource } from "./rest.datasource";
 
 @Injectable()
 export class ConservationAreaRepository {
@@ -8,7 +9,7 @@ export class ConservationAreaRepository {
   private timeSlots: TimeSlot[] = [];
   selectedTimeSlots: { [id: number]: TimeSlot } = {};
 
-  constructor(private dataSource: StaticDataSource) {
+  constructor(private dataSource: RestDataSource) {
     dataSource.getConservationAreas().subscribe(data => {
       this.conservationAreas = data;
     });
@@ -47,5 +48,25 @@ export class ConservationAreaRepository {
 
   getTimeSlots(): TimeSlot[] {
     return this.conservationAreas.flatMap(area => area.timeSlots || []);
+  }
+
+  saveProduct(conservationArea: ConservationArea) {
+    if (conservationArea.id == null || conservationArea.id == 0) {
+        this.dataSource.saveConservationArea(conservationArea)
+            .subscribe(p => this.conservationAreas.push(p));
+    } else {
+        this.dataSource.updateConservationArea(conservationArea)
+            .subscribe(p => {
+                this.conservationAreas.splice(this.conservationAreas.
+                    findIndex(p => p.id == conservationArea.id), 1, conservationArea);
+            });
+    } 
+  }
+  
+  deleteConservationArea(id: number) {
+      this.dataSource.deleteConservationArea(id).subscribe(p => {
+          this.conservationAreas.splice(this.conservationAreas.
+              findIndex(p => p.id == id), 1);
+      })
   }
 }

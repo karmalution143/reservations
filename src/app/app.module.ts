@@ -7,6 +7,7 @@ import { CheckoutComponent } from "./reservationStore/checkout.component";
 import { CartDetailComponent } from "./reservationStore/cartDetail.component";
 import { RouterModule } from "@angular/router";
 import { StoreFirstGuard } from "./storeFirst.guard";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,9 +25,15 @@ import { StoreFirstGuard } from "./storeFirst.guard";
         path: "checkout", component: CheckoutComponent,
         canActivate: [StoreFirstGuard]
       },
+      {
+        path: "admin",
+        loadChildren: () => import("./admin/admin.module")
+            .then(m => m.AdminModule),
+        canActivate: [StoreFirstGuard]
+      },
       { path: "**", redirectTo: "/reservationStore" }
     ])],
-  providers: [StoreFirstGuard],
+  providers: [StoreFirstGuard, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
